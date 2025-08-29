@@ -78,9 +78,27 @@
     }
     .btn:hover { transform:scale(1.05); }
 
+    /* Toggle Button */
+    .toggle {
+      cursor:pointer; font-size:22px; background:none; border:none; color:#fff;
+    }
+
     /* Scrollbar */
     ::-webkit-scrollbar { width:8px; }
     ::-webkit-scrollbar-thumb { background:#555; border-radius:10px; }
+
+    /* 🌞 Light Mode */
+    body.light { 
+      background: linear-gradient(-45deg, #ffcccc, #ccf2ff, #d9ffcc, #fff2cc);
+      color:#000;
+    }
+    body.light .sidebar { background:linear-gradient(180deg,#f9f9f9,#eaeaea); box-shadow:4px 0 15px rgba(0,0,0,0.1);}
+    body.light .menu a { background:#ddd; color:#111; }
+    body.light .menu a:hover { background:#bbb; }
+    body.light .topbar { background:linear-gradient(90deg,#f9f9f9,#eaeaea); box-shadow:0 2px 8px rgba(0,0,0,0.15);}
+    body.light .card { background:#fff; color:#000; box-shadow:0 5px 12px rgba(0,0,0,0.15);}
+    body.light .btn { background:linear-gradient(45deg,#ff4d4d,#ffb84d); color:#fff; }
+    body.light .toggle { color:#111; }
   </style>
 </head>
 <body>
@@ -102,7 +120,10 @@
   <div class="main">
     <div class="topbar">
       <h1>Welcome Home</h1>
-      <button class="btn">+ New</button>
+      <div>
+        <button class="btn">+ New</button>
+        <button class="toggle" id="themeToggle">🌙</button>
+      </div>
     </div>
     <div class="content">
       <div class="card">
@@ -123,5 +144,17 @@
       </div>
     </div>
   </div>
+
+  <script>
+    const toggleBtn = document.getElementById("themeToggle");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+      if(document.body.classList.contains("light")){
+        toggleBtn.textContent = "🌞";
+      } else {
+        toggleBtn.textContent = "🌙";
+      }
+    });
+  </script>
 </body>
 </html>
